@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: prs-web
+Implementation-Version: v01.01
+Built-By: MAX-Student
+Implementation-Vendor-Id: com.prs
+Build-Jdk: 1.8.0_202
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/prs-web
+Created-By: Maven Integration for Eclipse
+
