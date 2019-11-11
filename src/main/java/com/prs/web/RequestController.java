@@ -59,13 +59,14 @@ public class RequestController {
 		return jr;
 	}
 	
-	// add -
+	// add - setting status to "New"
 	@PostMapping("/")
 	public JsonResponse addRequest(@RequestBody Request r) {
 		
 		JsonResponse jr = null;
-		try {
+		try { r.setStatus("New");
 			jr = JsonResponse.getInstance(requestRepo.save(r));
+			r.setSubmittedDate(LocalDateTime.now());
 		}
 		catch (DataIntegrityViolationException dive) {
 			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
@@ -134,7 +135,7 @@ public class RequestController {
 		return jr;
 	}
 	
-	// update reject review
+	// update reject status
 	@PutMapping("/reject")
 	public JsonResponse updateReject(@RequestBody Request r) {
 		JsonResponse jr = null;
