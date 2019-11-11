@@ -58,6 +58,23 @@ public class UserController {
 		}
 		return jr;
 	}
+	@PostMapping("/login")
+	public JsonResponse addLogin(@RequestBody User u) {
+		
+		JsonResponse jr = null;
+		try {
+			jr = JsonResponse.getInstance(userRepo.findByUserNameAndPassword(u.getUserName(), u.getPassword()));
+		}
+		catch (DataIntegrityViolationException dive) {
+			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
+			dive.printStackTrace();
+		}
+		catch (Exception e) {
+			jr = JsonResponse.getInstance(e.getMessage());
+			e.printStackTrace();
+		}
+		return jr;
+	}
 	
 	// update -
 	@PutMapping("/")
